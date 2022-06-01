@@ -18,6 +18,7 @@ public partial class App : Application
         Task.Run(() =>
         {
             var builder = WebApplication.CreateBuilder();
+            builder.Services.AddControllersWithViews();
             builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             builder.WebHost.UseUrls("http://localhost:16000", "https://localhost:16001");
 
@@ -27,6 +28,10 @@ public partial class App : Application
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller}/{action=Index}/{id?}");
+
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
@@ -35,9 +40,6 @@ public partial class App : Application
                     spa.UseReactDevelopmentServer(npmScript: "start");
             });
 
-            // app.MapGet("/hello", () => "Hello World!");
-
-            // app.Run("http://localhost:16000;https://localhost:16001");
             app.Run();
         });
     }
