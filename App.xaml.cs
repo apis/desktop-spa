@@ -18,27 +18,56 @@ public partial class App : Application
         Task.Run(() =>
         {
             var builder = WebApplication.CreateBuilder();
+            // builder.Services.AddReverseProxy();
             builder.Services.AddControllersWithViews();
             builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
-            builder.WebHost.UseUrls("http://localhost:16000", "https://localhost:16001");
+            builder.WebHost.UseUrls("http://localhost:16000");
 
             var app = builder.Build();
 
-            app.UseSpaStaticFiles();
-            app.UseHttpsRedirection();
+            
+            // app.UseHttpsRedirection();
             app.UseRouting();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller}/{action=Index}/{id?}");
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            // app.UseStatusCodePages();
 
-                if (app.Environment.IsDevelopment()) 
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-            });
+            // if (app.Environment.IsDevelopment())
+            // {
+            //     app.UseDeveloperExceptionPage();
+            // }
+            // else
+            // {
+            //     app.UseExceptionHandler("/Error");
+            // }
+
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapReverseProxy();
+            // });
+
+
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/weatherforecast"),
+                appBuilder =>
+                {
+                    appBuilder.UseSpa(spa =>
+                    {
+                        spa.Options.SourcePath = "ClientApp";
+
+                        if (app.Environment.IsDevelopment())
+                            spa.UseReactDevelopmentServer(npmScript: "start");
+                        // spa.UseProxyToSpaDevelopmentServer("http://localhost:5000/");
+                        else
+                        {
+                            appBuilder.UseSpaStaticFiles();
+                        }
+                    });
+                }
+            );
 
             app.Run();
         });
