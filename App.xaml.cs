@@ -18,8 +18,7 @@ public partial class App : Application
         Task.Run(() =>
         {
             var builder = WebApplication.CreateBuilder();
-            // builder.Services.AddReverseProxy();
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllers();
             builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             builder.WebHost.UseUrls("http://localhost:16000");
 
@@ -44,12 +43,6 @@ public partial class App : Application
             //     app.UseExceptionHandler("/Error");
             // }
 
-            // app.UseEndpoints(endpoints =>
-            // {
-            //     endpoints.MapReverseProxy();
-            // });
-
-
             app.UseWhen(
                 context => !context.Request.Path.StartsWithSegments("/weatherforecast"),
                 appBuilder =>
@@ -59,8 +52,8 @@ public partial class App : Application
                         spa.Options.SourcePath = "ClientApp";
 
                         if (app.Environment.IsDevelopment())
-                            spa.UseReactDevelopmentServer(npmScript: "start");
-                        // spa.UseProxyToSpaDevelopmentServer("http://localhost:5000/");
+                            // spa.UseReactDevelopmentServer(npmScript: "start");
+                            spa.UseProxyToSpaDevelopmentServer("http://localhost:5000/");
                         else
                         {
                             appBuilder.UseSpaStaticFiles();
