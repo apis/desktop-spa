@@ -3,7 +3,6 @@ using System.Windows;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebBackend;
@@ -56,8 +55,9 @@ public partial class App : Application
                         spa.Options.SourcePath = "ClientApp";
 
                         if (app.Environment.IsDevelopment())
-                            // spa.UseReactDevelopmentServer(npmScript: "start");
+                        {
                             spa.UseProxyToSpaDevelopmentServer("http://localhost:5000/");
+                        }
                         else
                         {
                             appBuilder.UseSpaStaticFiles();

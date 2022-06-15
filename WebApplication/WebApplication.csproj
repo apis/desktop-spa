@@ -10,8 +10,6 @@
 		<IsPackable>false</IsPackable>
 		<SpaRoot>ClientApp\</SpaRoot>
 		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
-		<SpaProxyServerUrl>http://localhost:16000</SpaProxyServerUrl>
-		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<BaseOutputPath>..\output\bin</BaseOutputPath>
 	</PropertyGroup>
 
