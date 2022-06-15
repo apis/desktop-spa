@@ -1,4 +1,6 @@
-namespace WebBackend
+using System;
+
+namespace NetCoreSpa
 {
     public class WeatherForecast
     {

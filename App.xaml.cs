@@ -2,11 +2,9 @@
 using System.Windows;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebBackend;
 
 namespace NetCoreSpa;
 
@@ -20,10 +18,7 @@ public partial class App : Application
         Task.Run(() =>
         {
             var builder = WebApplication.CreateBuilder();
-
-            var assembly = typeof(WeatherForecast).Assembly; // Could be any type from external assembly
-            builder.Services.AddControllers()
-                .PartManager.ApplicationParts.Add(new AssemblyPart(assembly));
+            builder.Services.AddControllers();
             builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             builder.WebHost.UseUrls("http://localhost:16000");
 
