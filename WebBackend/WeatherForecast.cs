@@ -1,6 +1,6 @@
 using System;
 
-namespace NetCoreSpa
+namespace WebBackend
 {
     public class WeatherForecast
     {
