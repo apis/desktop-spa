@@ -2,7 +2,7 @@
   <div>
     <h1>Counter</h1>
 
-    <p>This is a simple example of a Vue component.</p>
+    <p>This is a simple example of a Vue JS component.</p>
 
     <p aria-live="polite">Current count: <strong>{{currentCount}}</strong></p>
 
