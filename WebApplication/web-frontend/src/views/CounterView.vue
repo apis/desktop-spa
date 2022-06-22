@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import CounterMain from '@/components/CounterMain.vue'
 
 export default {
@@ -13,4 +12,5 @@ export default {
   components: {
     CounterMain
   }
-}</script>
+}
+</script>

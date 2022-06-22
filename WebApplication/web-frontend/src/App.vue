@@ -10,16 +10,30 @@
 
 <style>
 
-@import "./assets/custom.css";
-/*  @import "./assets/NavMenu.css";*/
+a {
+  color: #0366d6;
+}
 
-/*#app {
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+@import "@/assets/custom.css";
+@import "@/assets/NavMenu.css";
+
+  /*#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}*/
+}
 
 nav {
   padding: 30px;
@@ -33,4 +47,5 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+*/
 </style>

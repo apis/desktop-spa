@@ -4,11 +4,13 @@
   </div>
 </template>
 
-<script>import FetchDataMain from '@/components/FetchDataMain.vue'
+<script>
+import FetchDataMain from '@/components/FetchDataMain.vue'
 
 export default {
   name: 'FetchDataView',
   components: {
     FetchDataMain
   }
-}</script>
+}
+</script>
