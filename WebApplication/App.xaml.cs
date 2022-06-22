@@ -22,7 +22,7 @@ public partial class App : Application
             var assembly = typeof(WeatherForecast).Assembly; // Could be any type from external assembly
             builder.Services.AddControllers()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(assembly));
-            builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "WebFrontEnd/dist"; });
+            builder.Services.AddSpaStaticFiles(configuration => { configuration.RootPath = "web-frontend/dist"; });
             builder.WebHost.UseUrls("http://localhost:16000");
 
             var app = builder.Build();
@@ -52,7 +52,7 @@ public partial class App : Application
                 {
                     appBuilder.UseSpa(spa =>
                     {
-                        spa.Options.SourcePath = "WebFrontEnd";
+                        spa.Options.SourcePath = "web-frontend";
 
                         if (app.Environment.IsDevelopment())
                         {

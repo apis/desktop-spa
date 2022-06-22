@@ -8,7 +8,7 @@
 		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
 		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
 		<IsPackable>false</IsPackable>
-		<SpaRoot>WebFrontEnd\</SpaRoot>
+		<SpaRoot>web-frontend\</SpaRoot>
 		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
 		<BaseOutputPath>..\output\bin</BaseOutputPath>
 	</PropertyGroup>
@@ -50,7 +50,7 @@
 		<ItemGroup>
 			<DistFiles Include="$(SpaRoot)build\**" />
 			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
-				<RelativePath>WebFrontEnd\dist\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+				<RelativePath>web-frontend\dist\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
 				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			</ResolvedFileToPublish>
