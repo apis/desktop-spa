@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebBackend;
 
-namespace NetCoreSpa;
+namespace WebApplication;
 
 /// <summary>
 ///     Interaction logic for App.xaml
@@ -18,7 +18,7 @@ public partial class App : Application
     {
         Task.Run(() =>
         {
-            var builder = WebApplication.CreateBuilder();
+            var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder();
             var assembly = typeof(WeatherForecast).Assembly; // Could be any type from external assembly
             builder.Services.AddControllers()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(assembly));
